@@ -7,7 +7,29 @@ I use docker-compose as an orchestrator. To run these containers:
 ```
 docker-compose up -d
 ```
-
+```
+docker cp docker-lamp_www_1:/usr/local/etc/php ./config
+```
+```
+cd config 
+```
+```
+cp php.ini-production php.ini
+```
+```
+docker-compose up --build
+```
+```
+docker-compose exec www php -v
+```
+```
+docker run --rm -v $(pwd):/app composer:1.10 install
+```
+```
+sobre la ruta donde se encuentra laravel
+docker-compose exec www php artisan key:generate
+```
+agregar al volumen de www. la nueva carpeta con los ajustes de php ./config:/usr/local/etc/php
 Open phpmyadmin at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 Open web browser to look at a simple php example at [http://127.0.0.1:80](http://127.0.0.1:80)
 
